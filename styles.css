@@ -4,18 +4,24 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+}
+
 body {
     font-family: sans-serif;
     line-height: 1.6;
     background-color: #f4f4f4;
     color: #333;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
     background-color: #001c57;
     color: white;
-    padding: 20px 0;
+    padding: 20px;
     text-align: center;
 }
 
@@ -73,6 +79,7 @@ footer {
     padding: 20px;
     background-color: #001c57;
     color: white;
+    margin-top: auto;
 }
 
 #portrait {
