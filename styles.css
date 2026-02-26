@@ -1,4 +1,7 @@
-* {
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,64 +11,80 @@ html, body {
     height: 100%;
 }
 
+/* ---------- Base ---------- */
 body {
-    font-family: sans-serif;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-    padding: 20px;
+    background: linear-gradient(180deg, #f4f6fb, #e9eef7);
+    color: #1f2933;
     display: flex;
     flex-direction: column;
 }
 
+/* ---------- Layout Wrapper ---------- */
+.container {
+    width: min(1100px, 92%);
+    margin-inline: auto;
+}
+
+/* ---------- Header ---------- */
 header {
-    background-color: #001c57;
+    background: linear-gradient(135deg, #001c57, #0039a6);
     color: white;
-    padding: 20px;
+    padding: 1.5rem 0;
     text-align: center;
 }
 
 header h1 {
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
 }
 
+/* ---------- Navigation ---------- */
 nav ul {
     list-style: none;
     display: flex;
+    flex-wrap: wrap; /* allows wrapping on small screens */
     justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
+nav a {
     color: white;
     text-decoration: none;
-    font-size: 1.2em;
+    font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background 0.2s ease, transform 0.15s ease;
 }
 
-nav ul li a:hover {
-    text-decoration: underline;
+nav a:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
 }
 
+/* ---------- Sections (Cards) ---------- */
 section {
-    margin: 40px auto;
-    padding: 20px;
-    max-width: 800px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    margin: 2.5rem auto;
+    padding: clamp(1.2rem, 2.5vw, 2rem);
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    width: min(900px, 100%);
 }
 
+/* ---------- Typography ---------- */
 h2 {
-    margin-bottom: 20px;
-    font-size: 2em;
+    margin-bottom: 1.2rem;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
     text-align: center;
+    color: #001c57;
 }
 
 h3 {
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
     text-align: center;
 }
 
@@ -73,71 +92,78 @@ h5 {
     text-align: center;
 }
 
-footer {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #001c57;
-    color: white;
-    margin-top: auto;
-}
-
-#portrait {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 25%;
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 5%;
-}
-
-#description {
-    float: center;
-    font-size: 20px;
-}
-
 p {
     text-align: center;
-    font-size: 15px;
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    max-width: 65ch;
+    margin-inline: auto;
 }
 
-.fa {
-    padding: 20px;
-    font-size: 30px;
-    width: 50px;
+/* ---------- Portrait Image ---------- */
+#portrait {
+    display: block;
+    margin: 1.5rem auto;
+    width: clamp(160px, 30%, 260px);
+    height: auto;
+
+    border-radius: 8px;
+
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    transition: transform 0.25s ease;
+}
+
+/* #portrait:hover {
+    transform: scale(1.04);
+} */
+
+/* ---------- Description ---------- */
+#description {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
     text-align: center;
-    text-decoration: none;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Social Icons ---------- */
+.fa {
+    font-size: 1.4rem;
+    width: 42px;
+    height: 42px;
+    line-height: 42px;
+    margin: 0.3rem;
+    border-radius: 50%;
+    background: #001c57;
+    color: white;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .fa:hover {
-    opacity: 0.7;
+    transform: translateY(-3px);
+    background: #0039a6;
 }
 
-.fa-linkedin {
-    color: white;
-}
-
-/* Container for the text */
+/* ---------- Big Text Link (Responsive) ---------- */
 .text-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    text-decoration: none; /* Remove underline from link */
-    color: black; /* Set default text color */
-    font-size: 150px; /* Adjust font size as needed */
-    cursor: pointer; /* Add pointer cursor on hover */
+    text-decoration: none;
+    color: #001c57;
+    font-weight: 700;
+    font-size: clamp(2rem, 8vw, 10rem);
+    cursor: pointer;
+    transition: transform 0.2s ease;
 }
 
-/* Hide hover text initially */
+.text-link:hover {
+    transform: scale(1.05);
+}
+
+/* Hover swap text */
 .text-link .hover-text {
     display: none;
 }
 
-/* Show hover text and hide base text on hover */
 .text-link:hover .base-text {
     display: none;
 }
@@ -146,7 +172,34 @@ p {
     display: inline;
 }
 
+/* ---------- Jobs ---------- */
 .jobs {
     cursor: pointer;
-    margin-bottom: 2px;
+    margin-bottom: 0.25rem;
+    transition: color 0.15s ease;
+}
+
+.jobs:hover {
+    color: #0039a6;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    text-align: center;
+    padding: 1.2rem;
+    background: #001c57;
+    color: white;
+    margin-top: auto;
+}
+
+/* ---------- Mobile Tweaks ---------- */
+@media (max-width: 600px) {
+    section {
+        margin: 1.5rem auto;
+        padding: 1.2rem;
+    }
+
+    nav ul {
+        gap: 0.6rem;
+    }
 }
